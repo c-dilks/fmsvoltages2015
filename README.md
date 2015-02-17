@@ -1,20 +1,24 @@
-fmsvoltages
+fmsvoltages2015
 ===========
 
 Thomas Burton's fmsvoltages program, upgraded in 2015 by Christopher Dilks
 Most of the documentation below was written by Thomas, updated to account
 for changes in 2015
 
+
 Note: some of the files referred to in examples below were moved to 
 `iterations/old`
 
+
 This is the code I used to calculate suggested FMS cell voltage changes
 based on requested gain changes provided by Steve.
+
 
 It is written in Python and used ROOT. Therefore you need to set up
 Python to use ROOT. You can do this by setting the `PYTHONPATH` variable:
  `setenv PYTHONPATH $ROOTSYS/lib`
 It requires Python version 2.7.
+
 
 The programme needs some configuration information - things like the
 FMS geometry, QT mappings, and other such things. Unfortunately, for
@@ -37,10 +41,12 @@ All these are changed as a result of modifying the gains - the QT bit
 shifts change when the voltages reach upper/lower limits, and each bit
 acts as a power-of-2 multiplier to the gain factor.
 
+
 The main programme is `App.py`, and the other Python files are used by it.
 Run the programme simply by typing
  `./App.py`
 You should see a graphical view of the FMS.
+
 
 Note: the following is paragraph on saving is deprecated, although it's
 not a bad idea to copy the starting iteration anyway
@@ -50,9 +56,11 @@ working directory that describes the initial state, and then modify
 that. If you are following the example, copy the `iteraton0` directory to
 some copy; I will refer to it as `working/` here.
 
+
 When you run `App.py`, you will be presented with a dialogue asking you
 for the input directory to work from. Select the `working/` directory and
 click OK.
+
 
 To modify the voltages, you need to provide it with a script giving a
 relative gain modification for each FMS channel. See the `corrections.txt`
@@ -64,6 +72,7 @@ Modify the voltages by clicking
  `Edit -> Modify gains`
 select the file and click OK. This will modify the gains.
 
+
 As an aside, Steve often provided me correction files in a *different*
 format, namely:
  `east/west detector channel factor`
@@ -73,9 +82,11 @@ In order to convert Steve's format to the required format, there is a
 script in the `scripts/` directory called `toRowColumn.py`. For usage run:
  `./toRowColumn.py --help`
 
+
 You can save the results by clicking
  `File -> Save`
 and click Yes when prompted if you want to overwrite the existing files
+
 
 If it worked, your directory should now resemble the values and files in
 the `iterations/iteration1/` directory. There should be some newly generated files,
@@ -89,6 +100,7 @@ FMS. These files are:
 The first 4 are used to set the large-cell voltages, while the last is
 for the small cells.
 
+
 Additionally you can generate a ROOT file and a PostScript file that
 summarises the results of the voltage modification. You can do this by
  `File -> Export ROOT file`
@@ -98,11 +110,13 @@ The ROOT file contains a tree called `cells`, the branches of which
 should hopefully be fairly self-explanatory.
 The PostScript file contains histograms generated from the ROOT file.
 
+
 Disclaimer:
 Though I tested the code pretty thoroughly, it may still have some kinks
 in it and the output should be checked to ensure that it is sensible.
 The ROOT and PostScript files are pretty helpful in doing this, hence
 their existance.
+
 
 Known bugs and issues:
  - Since the update to SL6, the code does not actually work on STAR
