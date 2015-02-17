@@ -7,9 +7,52 @@ void draw_plots(const char * iteration_dir="working")
   TFile * infile = new TFile(filename,"READ");
   TTree * tr = (TTree*) infile->Get("cells");
 
-  TH2F * bs_vs_gain = new TH2F("bs_vs_gain","bit shift vs. new gain",100,0,10,11,-5,5);
-  tr->Project("bs_vs_gain","newBitshift:newGain","detector>2");
+  // plots
+  TH2F * bs_vs_gain[4];
+  char bs_vs_gain_n[4][64];
+  char bs_vs_gain_t[4][64];
+  TH1F * voltage_diff[4];
+  char voltage_diff_n[4][64];
+  char voltage_diff_t[4][64];
+
+
+  // plot names/titles
+  for(Int_t n=0; n<4; n++)
+  {
+    sprintf(bs_vs_gain_n[n],"bs_vs_gain_%d",n+1);
+    sprintf(voltage_diff_n[n],"voltage_diff_%d",n+1);
+    
+    sprintf(bs_vs_gain_t[n],"bit shift vs. new gain (nstb%d)",n+1);
+    sprintf(voltage_diff_t[n],"V_{new}-V_{old} (nstb%d)",n+1);
+
+    bs_vs_gain[n] = new TH2F(bs_vs_gain_n[n],bs_vs_gain_t[n],100,0,10,11,-5,5);
+    if(n<2) voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],300,-1000,1000);
+    else voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],100,-200,200);
+  };
+
+
+  // projections
+  char nstbcut[4][64];
+  for(Int_t n=0; n<4; n++)
+  {
+    sprintf(nstbcut[n],"detector==%d",n+1);
+    tr->Project(bs_vs_gain_n[n],"newBitshift:newGain",nstbcut[n]);
+    tr->Project(voltage_diff_n[n],"newVoltage-oldVoltage",nstbcut[n]);
+  }
+
   TCanvas * bs_vs_gain_canv = new TCanvas("bs_vs_gain_canv","bs_vs_gain_canv",700,500);
-  bs_vs_gain_canv->SetLogx();
-  bs_vs_gain->Draw("colz");
+  bs_vs_gain_canv->Divide(2,2);
+  for(Int_t n=0; n<4; n++)
+  {
+    bs_vs_gain_canv->GetPad(n+1)->SetLogx();
+    bs_vs_gain_canv->cd(n+1);
+    bs_vs_gain[n]->Draw("colz");
+  };
+  TCanvas * voltage_diff_canv = new TCanvas("voltage_diff_canv","voltage_diff_canv",700,500);
+  voltage_diff_canv->Divide(2,2);
+  for(Int_t n=0; n<4; n++)
+  {
+    voltage_diff_canv->cd(n+1);
+    voltage_diff[n]->Draw();
+  };
 };

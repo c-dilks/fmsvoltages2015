@@ -37,28 +37,33 @@ class Menus:
 #        file_menu.add_command(label='Dialog', menu=open_dialog)
 
         # Creates the "edit" menu
-        edit_menu = Menu(menu)
-#        edit_menu.add_command(label='Change small cells',
+        view_menu = Menu(menu)
+#        view_menu.add_command(label='Change small cells',
 #                                   command = application.calibrate_all_small)
-        edit_menu.add_command(label = 'Show voltage', command = application.image_window.display_voltage)
-        edit_menu.add_command(label = 'Show detector', command = application.image_window.display_detector)
-        edit_menu.add_command(label = 'Show QT', command = application.image_window.display_qt_boards)
-        edit_menu.add_command(label = 'Show Bitshifts', command = application.image_window.display_qt_bitshift)
-        edit_menu.add_separator()
-        edit_menu.add_command(label='Modify gains', command=application.apply_corrections_from_file)
+        view_menu.add_command(label = 'NSTB', command = application.image_window.display_detector)
+        view_menu.add_command(label = 'QT Slots', command = application.image_window.display_qt_boards)
+        view_menu.add_separator()
+        view_menu.add_command(label = 'Large Cell Voltages', command = application.image_window.display_large_voltage)
+        view_menu.add_command(label = 'Small Cell Voltages', command = application.image_window.display_small_voltage)
+        view_menu.add_command(label = 'Bitshifts', command = application.image_window.display_qt_bitshift)
+        view_menu.add_command(label = 'Gains', command = application.image_window.display_gain)
         # Add a drop-down sub-menu to edit allowing to change
         # either all the small or all the large voltages using
         # an input file.
-#        edit_change_submenu = Menu(edit_menu);
+#        edit_change_submenu = Menu(view_menu);
 #        edit_change_submenu.add_command(label='Change small cells',
 #                                   command = application.calibrate_all_small)
 #        edit_change_submenu.add_command(label='Change large cells',
 #                                   command = application.calibrate_all_small)
 
+        edit_menu = Menu(menu)
+        edit_menu.add_command(label='Modify gains', command=application.apply_corrections_from_file)
+
         # Add each drop-down to its parent
         menu.add_cascade(label = 'File', menu = file_menu)
+        menu.add_cascade(label = 'View', menu = view_menu)
         menu.add_cascade(label = 'Edit', menu = edit_menu)
-#        edit_menu.add_cascade(label='Change', menu=edit_change_submenu)
+#        view_menu.add_cascade(label='Change', menu=edit_change_submenu)
 
 #    def ask_to_quit(self):
 #        if tkMessageBox.askyesno(title='Exit?', message='Are you sure?', default='no'):

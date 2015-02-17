@@ -329,6 +329,7 @@ def optimise(cell, newgain):
         to also comment out the short circuit lines in the else block below
         (search for SHORT CIRCUIT)
         """
+        """
         if shift<0:
             shift=0
             v=cell.min_voltage(shift)
@@ -337,6 +338,7 @@ def optimise(cell, newgain):
             shift=0
             v=cell.max_voltage(shift)
             print '====> BIT SHIFT SHORT CIRCUIT to voltage', v
+        """
     else:
         # If we didn't find a valid voltage, the gain was either too high
         # or low to be achieved. Set both the voltage and bitshift to
@@ -344,13 +346,13 @@ def optimise(cell, newgain):
         oldshift = cell.qt.bitshift
         if newgain < cell.gain:
             # We want a reduced gain, set voltage and bitshift to min.
-            #shift = qt.VALID_BITSHIFTS[0] # SHORT CIRCUIT
-            shift = 0 # SHORT CIRCUIT
+            shift = qt.VALID_BITSHIFTS[0] # NOT SHORT CIRCUIT
+            # shift = 0 # SHORT CIRCUIT
             v = cell.min_voltage(shift)
         else:
             # We want an increased gain, set voltage and bitshift to max.
-            #shift = qt.VALID_BITSHIFTS[-1] #SHORT CIRCUIT
-            shift = 0 #SHORT CIRCUIT
+            shift = qt.VALID_BITSHIFTS[-1] # NOT SHORT CIRCUIT
+            # shift = 0 #SHORT CIRCUIT
             v = cell.max_voltage(shift)
         gain = norm * calibration.get_adc(v) * math.pow(2., shift - oldshift)
     return v, shift, gain

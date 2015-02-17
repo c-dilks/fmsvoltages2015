@@ -190,25 +190,110 @@ class ImageWindow(Frame):
         self.canvas.create_text(self.canvas_width - self.padding_width, self.padding_height, text='South', fill='white', anchor='ne')
         self.display_detector() # Colour cells by detector number
 
-    def display_voltage(self):
-        colours = {0: "red", 200: "green", 400: "blue", 600: "pink",
-            800: "orange", 1000: "brown", 1200: "yellow", 1400: "magenta",
-            1600: "cyan"}
+    def display_large_voltage(self):
+        colours = {0: "DimGray",
+                   100: "Indigo",
+                   200: "Purple",
+                   300: "MidnightBlue",
+                   400: "CornflowerBlue",
+                   500: "PowderBlue",
+                   600: "LightSeaGreen",
+                   700: "Olive",
+                   800: "YellowGreen",
+                   900: "Green",
+                   1000: "MediumSpringGreen",
+                   1100: "Lime",
+                   1200: "Yellow",
+                   1300: "Gold",
+                   1400: "Orange",
+                   1500: "DeepPink",
+                   1600: "Red",
+                   1700: "Silver",
+                   1800: "White",
+                   5000: "Black"}
         for id, cell in self.cells.iteritems():
             v = cell.voltage
+            if cell.detector>2:
+                v=5000
             delta = {abs(v - i): i for i in colours.iterkeys()}
             colour = colours[delta[min(delta)]]
             self.canvas.itemconfig(id, fill=colour)
         voltagelegend = Toplevel()
         voltagelegend.resizable(FALSE, FALSE) # Prevent resizing by the user
         canvas = Canvas(voltagelegend, background='black',
-            width=200, height=400)
+            width=200, height=800)
         canvas.pack()
         for i, colour in colours.iteritems():
             # Add 1 from slot number to give range [1, N]
             # This matches Steve's output format
             Label(canvas, fg=colour, justify=LEFT, font=('Courier', '14'),
                 text='{:>4} V'.format(i), background='black').grid(row=i)
+
+    def display_small_voltage(self):
+        colours = {0: "DimGray",
+                   16: "Indigo",
+                   32: "Purple",
+                   48: "MidnightBlue",
+                   64: "CornflowerBlue",
+                   80: "PowderBlue",
+                   96: "LightSeaGreen",
+                   112: "Olive",
+                   128: "YellowGreen",
+                   144: "Green",
+                   160: "MediumSpringGreen",
+                   176: "Lime",
+                   192: "Yellow",
+                   208: "Gold",
+                   224: "Orange",
+                   240: "DeepPink",
+                   255: "Red",
+                   1000: "Black"}
+        for id, cell in self.cells.iteritems():
+            v = cell.voltage
+            if cell.detector<3:
+                v=1000
+            delta = {abs(v - i): i for i in colours.iterkeys()}
+            colour = colours[delta[min(delta)]]
+            self.canvas.itemconfig(id, fill=colour)
+        voltagelegend = Toplevel()
+        voltagelegend.resizable(FALSE, FALSE) # Prevent resizing by the user
+        canvas = Canvas(voltagelegend, background='black',
+            width=200, height=800)
+        canvas.pack()
+        for i, colour in colours.iteritems():
+            # Add 1 from slot number to give range [1, N]
+            # This matches Steve's output format
+            Label(canvas, fg=colour, justify=LEFT, font=('Courier', '14'),
+                text='0x{:02X}'.format(i), background='black').grid(row=i)
+
+    def display_gain(self):
+        colours = {0: "Indigo",
+                   1: "MediumBlue",
+                   2: "DodgerBlue",
+                   3: "Olive",
+                   4: "Green",
+                   5: "Lime",
+                   6: "Yellow",
+                   7: "Gold",
+                   8: "Orange",
+                   9: "DeepPink",
+                   10: "Red",
+                   20: "White"}
+        for id, cell in self.cells.iteritems():
+            g = cell.gain
+            delta = {abs(g - i): i for i in colours.iterkeys()}
+            colour = colours[delta[min(delta)]]
+            self.canvas.itemconfig(id, fill=colour)
+        voltagelegend = Toplevel()
+        voltagelegend.resizable(FALSE, FALSE) # Prevent resizing by the user
+        canvas = Canvas(voltagelegend, background='black',
+            width=200, height=500)
+        canvas.pack()
+        for i, colour in colours.iteritems():
+            # Add 1 from slot number to give range [1, N]
+            # This matches Steve's output format
+            Label(canvas, fg=colour, justify=LEFT, font=('Courier', '14'),
+                text='gain={:>1}'.format(i), background='black').grid(row=i)
         
     def display_detector(self):
         """Sets cell colours by detector number."""
