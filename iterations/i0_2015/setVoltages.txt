@@ -17,21 +17,21 @@
 !sleep 100
 !rdac EE 0xFD
 !sleep 100
-!rdac F0 0xFA
+!rdac F0 0xFF
 !sleep 100
 !rdac F2 0xF8
 !sleep 100
 !rdac F4 0xF6
 !sleep 100
-!rdac F6 0xED
+!rdac F6 0xFF
 !sleep 100
 !rdac F8 0xFF
 !sleep 100
-!rdac FA 0xF4
+!rdac FA 0xFF
 !sleep 100
-!rdac FC 0xFE
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xFD
+!rdac FE 0xFF
 !sleep 100
 !setctrl 0 1
 !sleep 100
@@ -65,7 +65,7 @@
 !sleep 100
 !rdac FC 0xFD
 !sleep 100
-!rdac FE 0xEE
+!rdac FE 0xFF
 !sleep 100
 !setctrl 0 2
 !sleep 100
@@ -93,11 +93,11 @@
 !sleep 100
 !rdac F6 0xEA
 !sleep 100
-!rdac F8 0xF8
+!rdac F8 0xFF
 !sleep 100
-!rdac FA 0xFA
+!rdac FA 0xFF
 !sleep 100
-!rdac FC 0xF1
+!rdac FC 0xFF
 !sleep 100
 !rdac FE 0xE5
 !sleep 100
@@ -137,11 +137,11 @@
 !sleep 100
 !rdac E0 0xB0
 !sleep 100
-!rdac E2 0xED
+!rdac E2 0xFF
 !sleep 100
-!rdac E4 0xFA
+!rdac E4 0x0
 !sleep 100
-!rdac E6 0xFA
+!rdac E6 0x0
 !sleep 100
 !rdac E8 0xAE
 !sleep 100
@@ -151,9 +151,9 @@
 !sleep 100
 !rdac EE 0xBE
 !sleep 100
-!rdac F0 0xFA
+!rdac F0 0x0
 !sleep 100
-!rdac F2 0xED
+!rdac F2 0xFF
 !sleep 100
 !rdac F4 0xD4
 !sleep 100
@@ -167,7 +167,7 @@
 !sleep 100
 !setctrl 1 1
 !sleep 100
-!rdac E0 0xF6
+!rdac E0 0xFF
 !sleep 100
 !rdac E2 0xEA
 !sleep 100
@@ -175,9 +175,9 @@
 !sleep 100
 !rdac E6 0xEF
 !sleep 100
-!rdac E8 0xEC
+!rdac E8 0xFF
 !sleep 100
-!rdac EA 0xEB
+!rdac EA 0xFF
 !sleep 100
 !rdac EC 0xE0
 !sleep 100
@@ -213,7 +213,7 @@
 !sleep 100
 !rdac EA 0xEA
 !sleep 100
-!rdac EC 0xEA
+!rdac EC 0xFF
 !sleep 100
 !rdac EE 0xFA
 !sleep 100
@@ -221,13 +221,13 @@
 !sleep 100
 !rdac F2 0xD0
 !sleep 100
-!rdac F4 0xF6
+!rdac F4 0xFF
 !sleep 100
 !rdac F6 0xAD
 !sleep 100
 !rdac F8 0xD8
 !sleep 100
-!rdac FA 0xEF
+!rdac FA 0xFF
 !sleep 100
 !rdac FC 0xBA
 !sleep 100
@@ -239,23 +239,23 @@
 !sleep 100
 !rdac E2 0xEC
 !sleep 100
-!rdac E4 0xF8
+!rdac E4 0xFF
 !sleep 100
-!rdac E6 0xFA
+!rdac E6 0xFF
 !sleep 100
-!rdac E8 0xF1
+!rdac E8 0xFF
 !sleep 100
-!rdac EA 0xFA
+!rdac EA 0xFF
 !sleep 100
-!rdac EC 0xF4
+!rdac EC 0xFF
 !sleep 100
-!rdac EE 0xEE
+!rdac EE 0xFF
 !sleep 100
 !rdac F0 0xEF
 !sleep 100
-!rdac F2 0xF1
+!rdac F2 0xFF
 !sleep 100
-!rdac F4 0xF7
+!rdac F4 0xFF
 !sleep 100
 !rdac F6 0xF5
 !sleep 100
@@ -271,19 +271,19 @@
 !sleep 100
 !rdac E0 0xCB
 !sleep 100
-!rdac E2 0xFE
+!rdac E2 0xFF
 !sleep 100
-!rdac E4 0xF3
+!rdac E4 0xFF
 !sleep 100
-!rdac E6 0xFB
+!rdac E6 0xFF
 !sleep 100
 !rdac E8 0xF3
 !sleep 100
-!rdac EA 0xEB
+!rdac EA 0xFF
 !sleep 100
-!rdac EC 0xF3
+!rdac EC 0xFF
 !sleep 100
-!rdac EE 0xE1
+!rdac EE 0xFF
 !sleep 100
 !rdac F0 0xC4
 !sleep 100
@@ -297,41 +297,41 @@
 !sleep 100
 !rdac FA 0xA0
 !sleep 100
-!rdac FC 0xFE
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xEC
+!rdac FE 0xFF
 !sleep 100
 !setctrl 2 1
 !sleep 100
-!rdac E0 0xF2
+!rdac E0 0xFF
 !sleep 100
-!rdac E2 0xD6
+!rdac E2 0xFF
 !sleep 100
-!rdac E8 0xD6
+!rdac E8 0xFF
 !sleep 100
-!rdac EC 0xD2
+!rdac EC 0xFF
 !sleep 100
-!rdac F0 0xD2
+!rdac F0 0xFF
 !sleep 100
-!rdac F2 0xFA
+!rdac F2 0xFF
 !sleep 100
-!rdac F4 0xD2
+!rdac F4 0xFF
 !sleep 100
 !rdac F6 0xF1
 !sleep 100
 !rdac F8 0xC1
 !sleep 100
-!rdac FA 0xD2
+!rdac FA 0xFF
 !sleep 100
-!rdac FC 0xD2
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xD2
+!rdac FE 0xFF
 !sleep 100
 !setctrl 2 2
 !sleep 100
 !rdac E0 0xAC
 !sleep 100
-!rdac E2 0x58
+!rdac E2 0x0
 !sleep 100
 !rdac E4 0x7B
 !sleep 100
@@ -349,7 +349,7 @@
 !sleep 100
 !rdac F2 0xD8
 !sleep 100
-!rdac F4 0xD2
+!rdac F4 0xFF
 !sleep 100
 !rdac F6 0x4E
 !sleep 100
@@ -377,9 +377,9 @@
 !sleep 100
 !rdac EC 0xA6
 !sleep 100
-!rdac EE 0xE4
+!rdac EE 0xFF
 !sleep 100
-!rdac F8 0xD2
+!rdac F8 0x0
 !sleep 100
 !rdac FA 0x8E
 !sleep 100
@@ -397,7 +397,7 @@
 !sleep 100
 !rdac E6 0xA7
 !sleep 100
-!rdac E8 0x4F
+!rdac E8 0x0
 !sleep 100
 !rdac EA 0x9A
 !sleep 100
@@ -405,7 +405,7 @@
 !sleep 100
 !rdac EE 0x74
 !sleep 100
-!rdac F0 0x2B
+!rdac F0 0x0
 !sleep 100
 !rdac F2 0x11
 !sleep 100
@@ -413,7 +413,7 @@
 !sleep 100
 !rdac F6 0xC9
 !sleep 100
-!rdac F8 0x32
+!rdac F8 0x0
 !sleep 100
 !rdac FA 0x4
 !sleep 100
@@ -423,27 +423,27 @@
 !sleep 100
 !setctrl 3 1
 !sleep 100
-!rdac E4 0x57
+!rdac E4 0x0
 !sleep 100
 !rdac E6 0x10
 !sleep 100
-!rdac EA 0x4A
+!rdac EA 0x0
 !sleep 100
-!rdac EE 0x5D
+!rdac EE 0x0
 !sleep 100
-!rdac F0 0x1A
+!rdac F0 0x0
 !sleep 100
-!rdac F2 0x5A
+!rdac F2 0x0
 !sleep 100
 !rdac F4 0x32
 !sleep 100
 !rdac F6 0x15
 !sleep 100
-!rdac F8 0x17
+!rdac F8 0x0
 !sleep 100
 !rdac FA 0x25
 !sleep 100
-!rdac FC 0xD2
+!rdac FC 0xFF
 !sleep 100
 !rdac FE 0x79
 !sleep 100
@@ -451,7 +451,7 @@
 !sleep 100
 !rdac E0 0xF4
 !sleep 100
-!rdac E2 0x15
+!rdac E2 0x0
 !sleep 100
 !rdac E4 0x7A
 !sleep 100
@@ -485,7 +485,7 @@
 !sleep 100
 !rdac E0 0xB1
 !sleep 100
-!rdac E2 0xD1
+!rdac E2 0xFF
 !sleep 100
 !rdac E4 0xE3
 !sleep 100
@@ -497,7 +497,7 @@
 !sleep 100
 !rdac EC 0xCE
 !sleep 100
-!rdac EE 0xEE
+!rdac EE 0xFF
 !sleep 100
 !rdac F0 0x36
 !sleep 100
@@ -522,11 +522,11 @@
 !sleep 100
 !rdac EA 0x7E
 !sleep 100
-!rdac EC 0xD2
+!rdac EC 0xFF
 !sleep 100
 !rdac EE 0x57
 !sleep 100
-!rdac F0 0x6
+!rdac F0 0x0
 !sleep 100
 !rdac F2 0x5F
 !sleep 100
@@ -550,7 +550,7 @@
 !sleep 100
 !rdac EA 0x53
 !sleep 100
-!rdac EE 0x55
+!rdac EE 0x0
 !sleep 100
 !rdac F0 0xB8
 !sleep 100
@@ -558,11 +558,11 @@
 !sleep 100
 !rdac F4 0x23
 !sleep 100
-!rdac F6 0x5A
+!rdac F6 0x0
 !sleep 100
 !rdac F8 0xEE
 !sleep 100
-!rdac FA 0x23
+!rdac FA 0x0
 !sleep 100
 !rdac FC 0x35
 !sleep 100
@@ -572,23 +572,23 @@
 !sleep 100
 !rdac E0 0x95
 !sleep 100
-!rdac E2 0xD8
+!rdac E2 0xFF
 !sleep 100
-!rdac E4 0xD8
+!rdac E4 0xFF
 !sleep 100
-!rdac E6 0xD2
+!rdac E6 0xFF
 !sleep 100
 !rdac E8 0x72
 !sleep 100
-!rdac EA 0xD3
+!rdac EA 0xFF
 !sleep 100
 !rdac EC 0xD4
 !sleep 100
-!rdac EE 0xE8
+!rdac EE 0xFF
 !sleep 100
 !rdac F0 0xBF
 !sleep 100
-!rdac F2 0xEE
+!rdac F2 0xFF
 !sleep 100
 !rdac F4 0x43
 !sleep 100
@@ -598,35 +598,35 @@
 !sleep 100
 !rdac FA 0xC6
 !sleep 100
-!rdac FC 0xDE
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xE0
+!rdac FE 0xFF
 !sleep 100
 !setctrl 0 3
 !sleep 100
-!rdac E0 0xD2
+!rdac E0 0xFF
 !sleep 100
 !rdac E2 0x1C
 !sleep 100
 !rdac E8 0x77
 !sleep 100
-!rdac EC 0xF2
+!rdac EC 0xFF
 !sleep 100
-!rdac F0 0xFC
+!rdac F0 0xFF
 !sleep 100
 !rdac F2 0xC8
 !sleep 100
-!rdac F4 0xE7
+!rdac F4 0xFF
 !sleep 100
-!rdac F6 0xD2
+!rdac F6 0xFF
 !sleep 100
-!rdac F8 0xF6
+!rdac F8 0xFF
 !sleep 100
-!rdac FA 0xD4
+!rdac FA 0xFF
 !sleep 100
-!rdac FC 0xD2
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xD2
+!rdac FE 0xFF
 !sleep 100
 !setctrl 1 0
 !sleep 100
@@ -634,7 +634,7 @@
 !sleep 100
 !rdac E2 0xA8
 !sleep 100
-!rdac E4 0xDD
+!rdac E4 0xFF
 !sleep 100
 !rdac E6 0xAB
 !sleep 100
@@ -648,41 +648,41 @@
 !sleep 100
 !rdac F8 0xDA
 !sleep 100
-!rdac FA 0xEE
+!rdac FA 0xFF
 !sleep 100
-!rdac FC 0xF0
+!rdac FC 0xFF
 !sleep 100
 !rdac FE 0xBD
 !sleep 100
 !setctrl 1 1
 !sleep 100
-!rdac E0 0xFE
+!rdac E0 0xFF
 !sleep 100
 !rdac E2 0x79
 !sleep 100
-!rdac E4 0xD7
+!rdac E4 0xFF
 !sleep 100
 !rdac E6 0xC4
 !sleep 100
-!rdac E8 0xD2
+!rdac E8 0xFF
 !sleep 100
 !rdac EA 0x4D
 !sleep 100
-!rdac EC 0xE1
+!rdac EC 0xFF
 !sleep 100
-!rdac EE 0xF0
+!rdac EE 0xFF
 !sleep 100
 !rdac F0 0xDC
 !sleep 100
-!rdac F2 0xD6
+!rdac F2 0xFF
 !sleep 100
-!rdac F4 0xF8
+!rdac F4 0xFF
 !sleep 100
-!rdac F6 0xE4
+!rdac F6 0xFF
 !sleep 100
-!rdac F8 0xD5
+!rdac F8 0xFF
 !sleep 100
-!rdac FA 0xE4
+!rdac FA 0xFF
 !sleep 100
 !rdac FC 0xB5
 !sleep 100
@@ -696,7 +696,7 @@
 !sleep 100
 !rdac E4 0xF5
 !sleep 100
-!rdac E6 0xFA
+!rdac E6 0xFF
 !sleep 100
 !rdac E8 0xD7
 !sleep 100
@@ -706,11 +706,11 @@
 !sleep 100
 !rdac EE 0xA3
 !sleep 100
-!rdac F0 0xED
+!rdac F0 0xFF
 !sleep 100
 !rdac F2 0xC2
 !sleep 100
-!rdac F4 0xD2
+!rdac F4 0xFF
 !sleep 100
 !rdac F6 0x8F
 !sleep 100
@@ -730,13 +730,13 @@
 !sleep 100
 !rdac E4 0x6C
 !sleep 100
-!rdac E6 0xDB
+!rdac E6 0xFF
 !sleep 100
 !rdac E8 0x83
 !sleep 100
 !rdac EA 0x60
 !sleep 100
-!rdac EC 0xD1
+!rdac EC 0xFF
 !sleep 100
 !rdac EE 0xF4
 !sleep 100
@@ -744,9 +744,9 @@
 !sleep 100
 !rdac F2 0xC4
 !sleep 100
-!rdac F4 0xFA
+!rdac F4 0xFF
 !sleep 100
-!rdac F6 0xD2
+!rdac F6 0xFF
 !sleep 100
 !setctrl 2 0
 !sleep 100
@@ -770,13 +770,13 @@
 !sleep 100
 !rdac F2 0xE5
 !sleep 100
-!rdac F4 0xF9
+!rdac F4 0xFF
 !sleep 100
-!rdac F6 0xF5
+!rdac F6 0xFF
 !sleep 100
-!rdac F8 0xF0
+!rdac F8 0xFF
 !sleep 100
-!rdac FA 0xF7
+!rdac FA 0xFF
 !sleep 100
 !rdac FC 0x4E
 !sleep 100
@@ -788,33 +788,33 @@
 !sleep 100
 !rdac E2 0xFA
 !sleep 100
-!rdac E4 0xFA
+!rdac E4 0x0
 !sleep 100
-!rdac E6 0xF3
+!rdac E6 0xFF
 !sleep 100
-!rdac E8 0xFA
+!rdac E8 0xFF
 !sleep 100
 !rdac EA 0xB2
 !sleep 100
-!rdac EC 0xF9
+!rdac EC 0xFF
 !sleep 100
 !rdac EE 0xEF
 !sleep 100
-!rdac F0 0xEC
+!rdac F0 0xFF
 !sleep 100
-!rdac F2 0xF9
+!rdac F2 0xFF
 !sleep 100
 !rdac F4 0xFA
 !sleep 100
-!rdac F6 0xF5
+!rdac F6 0xFF
 !sleep 100
-!rdac F8 0xF4
+!rdac F8 0xFF
 !sleep 100
-!rdac FA 0xF4
+!rdac FA 0xFF
 !sleep 100
-!rdac FC 0xFA
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xF4
+!rdac FE 0xFF
 !sleep 100
 !setctrl 2 2
 !sleep 100
@@ -826,7 +826,7 @@
 !sleep 100
 !rdac E6 0xCD
 !sleep 100
-!rdac E8 0xFA
+!rdac E8 0x0
 !sleep 100
 !rdac EA 0xC0
 !sleep 100
@@ -836,19 +836,19 @@
 !sleep 100
 !rdac F0 0xC0
 !sleep 100
-!rdac F2 0xFA
+!rdac F2 0x0
 !sleep 100
 !rdac F4 0xF6
 !sleep 100
-!rdac F6 0xF2
+!rdac F6 0xFF
 !sleep 100
 !rdac F8 0xFA
 !sleep 100
 !rdac FA 0xFA
 !sleep 100
-!rdac FC 0xFE
+!rdac FC 0xFF
 !sleep 100
-!rdac FE 0xED
+!rdac FE 0xFF
 !sleep 100
 !setctrl 2 3
 !sleep 100
@@ -856,7 +856,7 @@
 !sleep 100
 !rdac E2 0xFA
 !sleep 100
-!rdac E4 0xEF
+!rdac E4 0xFF
 !sleep 100
 !rdac E8 0xD7
 !sleep 100
@@ -872,7 +872,7 @@
 !sleep 100
 !rdac F4 0xD9
 !sleep 100
-!rdac F6 0xE9
+!rdac F6 0xFF
 !sleep 100
 !rdac F8 0xC3
 !sleep 100
@@ -886,7 +886,7 @@
 !sleep 100
 !rdac E0 0xFD
 !sleep 100
-!rdac E2 0xEC
+!rdac E2 0xFF
 !sleep 100
 !rdac E4 0xDA
 !sleep 100
@@ -918,9 +918,9 @@
 !sleep 100
 !rdac E0 0xF7
 !sleep 100
-!rdac E2 0xF3
+!rdac E2 0xFF
 !sleep 100
-!rdac E4 0xEF
+!rdac E4 0xFF
 !sleep 100
 !rdac E6 0xF6
 !sleep 100
@@ -950,13 +950,13 @@
 !sleep 100
 !setctrl 3 2
 !sleep 100
-!rdac E0 0xF0
+!rdac E0 0xFF
 !sleep 100
 !rdac E2 0xFD
 !sleep 100
-!rdac E4 0xEF
+!rdac E4 0xFF
 !sleep 100
-!rdac E6 0xEB
+!rdac E6 0xFF
 !sleep 100
 !rdac E8 0xF7
 !sleep 100
@@ -966,7 +966,7 @@
 !sleep 100
 !rdac EE 0xDB
 !sleep 100
-!rdac F0 0xF7
+!rdac F0 0xFF
 !sleep 100
 !rdac F2 0xC8
 !sleep 100
@@ -986,25 +986,25 @@
 !sleep 100
 !rdac E0 0xEE
 !sleep 100
-!rdac E2 0xF2
+!rdac E2 0xFF
 !sleep 100
-!rdac E4 0xF7
+!rdac E4 0xFF
 !sleep 100
 !rdac E6 0xFA
 !sleep 100
-!rdac E8 0xFA
+!rdac E8 0xFF
 !sleep 100
-!rdac EA 0xFA
+!rdac EA 0xFF
 !sleep 100
-!rdac EC 0xFA
+!rdac EC 0xFF
 !sleep 100
 !rdac EE 0xF8
 !sleep 100
-!rdac F0 0xF0
+!rdac F0 0xFF
 !sleep 100
 !rdac F2 0xE3
 !sleep 100
-!rdac F4 0xFA
+!rdac F4 0xFF
 !sleep 100
 !rdac F6 0xE5
 !sleep 100

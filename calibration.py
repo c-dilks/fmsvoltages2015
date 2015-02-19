@@ -72,7 +72,7 @@ class Channel(object):
             # Set calibration curve parameters from the last three elements
             #self.p = [float(i) for i in values[3:6]] # for old fit function
             self.p = [float(i) for i in values[3:5]] # for new fit function
-            print '=====================', self.p
+            print 'gain curve params:', self.p
             self.function = None
             return True
         except IndexError:
@@ -223,7 +223,28 @@ class ChannelLarge(Channel):
     @classmethod
     def max_voltage(cls, bitshift=0):
         """Returns the maximum voltage for the parameterisation curve."""
-        return 1800
+        """if statement is implemented for edge cells"""
+        """
+        if ( Channel.row==0 or 
+            (Channel.row==1 and Channel.col==10) or
+            (Channel.row==2 and Channel.col==11) or
+            (Channel.row==3 and Channel.col==12) or
+            (Channel.row==4 and Channel.col==13) or
+            (Channel.row==5 and Channel.col==14) or
+            (Channel.row==6 and Channel.col==15) or
+            Channel.col==16 or
+            (Channel.row==27 and Channel.col==15) or
+            (Channel.row==28 and Channel.col==14) or
+            (Channel.row==29 and Channel.col==13) or
+            (Channel.row==30 and Channel.col==12) or
+            (Channel.row==31 and Channel.col==11) or
+            (Channel.row==32 and Channel.col==10) or
+            Channel.row==33):
+            return 1600
+        else:
+            return 1800
+            """
+        return 1700
 
 
 class Table:
@@ -317,28 +338,40 @@ def optimise(cell, newgain):
     # would become [0, -1, 1, -2, 2].
     valid.sort(key=lambda x: abs(x[1]))
 
+    """ 
+    if this boolean is true, we "short circuit" the bit shifts by setting the
+    maximum allowed voltage if shift>0 or the minimum allowed voltage if shift<0;
+    subsequently, we set shift=0 for the output tables
+    """
+    BITSHIFT_SHORT_CIRCUIT = 1
 
-    if valid:
+    # zero the dead channels
+    if cell.isDead():
+        v = 0
+        shift = 0
+
+    elif valid:
         v = valid[0][0]
         shift = valid[0][1]
+
+        # prevent fermi tubes from having positive bit shifts; if they do,
+        # force the bitshift to be 0 and set voltage to max allowed
+        if cell.isFermiTube():
+            shift = 0
+            v = cell.max_voltage(shift)
+
+
         print '==> voltage', v, 'shift', shift
-        """
-        SHORT CIRCUIT bit shifts, since for first iteration we want
-        all bit shifts to be zero
-        IMPORTANT NOTE: if you comment out this short circuit, you need
-        to also comment out the short circuit lines in the else block below
-        (search for SHORT CIRCUIT)
-        """
-        """
-        if shift<0:
-            shift=0
-            v=cell.min_voltage(shift)
-            print '====> BIT SHIFT SHORT CIRCUIT to voltage', v
-        elif shift>0:
-            shift=0
-            v=cell.max_voltage(shift)
-            print '====> BIT SHIFT SHORT CIRCUIT to voltage', v
-        """
+
+        if BITSHIFT_SHORT_CIRCUIT:
+            if shift<0:
+                shift=0
+                v=cell.min_voltage(shift)
+                print '====> BIT SHIFT SHORT CIRCUIT to voltage', v
+            elif shift>0:
+                shift=0
+                v=cell.max_voltage(shift)
+                print '====> BIT SHIFT SHORT CIRCUIT to voltage', v
     else:
         # If we didn't find a valid voltage, the gain was either too high
         # or low to be achieved. Set both the voltage and bitshift to
@@ -346,13 +379,22 @@ def optimise(cell, newgain):
         oldshift = cell.qt.bitshift
         if newgain < cell.gain:
             # We want a reduced gain, set voltage and bitshift to min.
-            shift = qt.VALID_BITSHIFTS[0] # NOT SHORT CIRCUIT
-            # shift = 0 # SHORT CIRCUIT
+            if BITSHIFT_SHORT_CIRCUIT:
+                shift = 0 
+            else:
+                shift = qt.VALID_BITSHIFTS[0]
             v = cell.min_voltage(shift)
         else:
             # We want an increased gain, set voltage and bitshift to max.
-            shift = qt.VALID_BITSHIFTS[-1] # NOT SHORT CIRCUIT
-            # shift = 0 #SHORT CIRCUIT
+            if BITSHIFT_SHORT_CIRCUIT:
+                shift = 0
+            else:
+                shift = qt.VALID_BITSHIFTS[-1]
             v = cell.max_voltage(shift)
         gain = norm * calibration.get_adc(v) * math.pow(2., shift - oldshift)
+        # check again if cell is fermi tube and zero the bit shift if it is
+        if cell.isFermiTube():
+            shift = 0
+    if BITSHIFT_SHORT_CIRCUIT:
+        print 'NB bit shift forced to zero (BITSHIFT_SHORT_CIRCUIT==1)'
     return v, shift, gain

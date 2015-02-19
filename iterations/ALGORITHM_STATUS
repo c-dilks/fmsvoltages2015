@@ -1,0 +1,20 @@
+set limit of fermi cells to 1400 (don't worry about bitshift -100)
+
+do not bitshit fermi cells (currently not bitshifting anything)
+
+demand cells which had empty bases be at 1400 V
+by setting gain corrs to unity for cells we put in today
+
+
+later:
+change large_edge to large_fermi and add the other large_fermi cells
+change large_regular to large_psu
+don't worry about resistive bases for now... maybe put it in the map
+
+alpha distributions for large_psu(+resistive), large_fermi, small_russian, small_yale
+
+
+large_fermi cells:
+------------------
+all edge cells
+

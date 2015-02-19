@@ -11,6 +11,9 @@ void draw_plots(const char * iteration_dir="working")
   TH2F * bs_vs_gain[4];
   char bs_vs_gain_n[4][64];
   char bs_vs_gain_t[4][64];
+  TH1F * voltage[4];
+  char voltage_n[4][64];
+  char voltage_t[4][64];
   TH1F * voltage_diff[4];
   char voltage_diff_n[4][64];
   char voltage_diff_t[4][64];
@@ -21,13 +24,23 @@ void draw_plots(const char * iteration_dir="working")
   {
     sprintf(bs_vs_gain_n[n],"bs_vs_gain_%d",n+1);
     sprintf(voltage_diff_n[n],"voltage_diff_%d",n+1);
+    sprintf(voltage_n[n],"voltage_%d",n+1);
     
     sprintf(bs_vs_gain_t[n],"bit shift vs. new gain (nstb%d)",n+1);
     sprintf(voltage_diff_t[n],"V_{new}-V_{old} (nstb%d)",n+1);
+    sprintf(voltage_t[n],"V_{new} (nstb%d)",n+1);
 
     bs_vs_gain[n] = new TH2F(bs_vs_gain_n[n],bs_vs_gain_t[n],100,0,10,11,-5,5);
-    if(n<2) voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],300,-1000,1000);
-    else voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],100,-200,200);
+    if(n<2) 
+    {
+      voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],300,-1000,1000);
+      voltage[n] = new TH1F(voltage_n[n],voltage_t[n],200,0,1850);
+    }
+    else 
+    {
+      voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],100,-200,200);
+      voltage[n] = new TH1F(voltage_n[n],voltage_t[n],100,0,256);
+    };
   };
 
 
@@ -38,6 +51,7 @@ void draw_plots(const char * iteration_dir="working")
     sprintf(nstbcut[n],"detector==%d",n+1);
     tr->Project(bs_vs_gain_n[n],"newBitshift:newGain",nstbcut[n]);
     tr->Project(voltage_diff_n[n],"newVoltage-oldVoltage",nstbcut[n]);
+    tr->Project(voltage_n[n],"newVoltage",nstbcut[n]);
   }
 
   TCanvas * bs_vs_gain_canv = new TCanvas("bs_vs_gain_canv","bs_vs_gain_canv",700,500);
@@ -54,5 +68,12 @@ void draw_plots(const char * iteration_dir="working")
   {
     voltage_diff_canv->cd(n+1);
     voltage_diff[n]->Draw();
+  };
+  TCanvas * voltage_canv = new TCanvas("voltage_canv","voltage_canv",700,500);
+  voltage_canv->Divide(2,2);
+  for(Int_t n=0; n<4; n++)
+  {
+    voltage_canv->cd(n+1);
+    voltage[n]->Draw();
   };
 };

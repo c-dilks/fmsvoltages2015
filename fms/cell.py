@@ -172,28 +172,28 @@ class Base(object):
         
         self.qt.set_info(cell)
 
-    @classmethod
-    def min_voltage(cls, bitshift=0):
+    def isFermiTube(self):
+        return 0
+
+    def min_voltage(self, bitshift=0):
         """Returns the minimum voltage to which the cell should be set.
         
         This can in principle depend on the cell's bitshift, hence the
         argument.
         """
-        pass
+        return 0
 
-    @classmethod
-    def max_voltage(cls, bitshift=0):
+    def max_voltage(self, bitshift=0):
         """Returns the maximum voltage for the parameterisation curve.
         """
-        pass
+        return 200 # doesn't matter; this method is overrided in in Large & Small
 
-    @classmethod
-    def is_valid_voltage(cls, voltage, shift=0):
+    def is_valid_voltage(self, voltage, shift=0):
         """Returns the maximum voltage for the parameterisation curve.
         
         Will return False for a voltage of None.
         """
-        return cls.min_voltage(shift) <= voltage <= cls.max_voltage(shift)
+        return self.min_voltage(shift) <= voltage <= self.max_voltage(shift)
 
     def compute_gain(self, voltage=None, bitshift=None):
         """Returns the gain of this cell at the requested voltage and bitshift.
@@ -220,6 +220,9 @@ class Base(object):
 
     def pseudorapidity(self):
         return self.geometry.pseudorapidity(self.row, self.column)
+
+    def isDead(self):
+        return 0
 
 
 ##############################################################################
@@ -309,17 +312,41 @@ class Small(Base):
     def height(cls):
         """Returns the cell height in cm."""
         return 3.875
-    
+
+
     ##########################################################################
-    @classmethod
+    def isDead(self):
+        """ check for not stacked cell (channels 9,10,28) """
+        if ( ( self.detector==3 and
+               ( self.channel==154 or
+                 self.channel==203 or
+                 self.channel==212 or
+                 self.channel==215)) or
+             ( self.detector==4 and
+               ( self.channel==225 or
+                 self.channel==235 or
+                 self.channel==258))):
+                 return 1
+        return 0
+
+    ##########################################################################
+    def isFermiTube(self):
+        return 0
+    
+
+    ##########################################################################
     def min_voltage(self, bitshift = 0):
         """Returns the minimum voltage for the parameterisation curve."""
         return 0
 
     ##########################################################################
-    @classmethod
     def max_voltage(self, bitshift = 0):
         """Returns the maximum voltage for the parameterisation curve."""
+
+        """check for dead PMT"""
+        if self.isDead():
+            return 0
+
         return 0xFF
 
 ##############################################################################
@@ -333,7 +360,7 @@ class Large(Base):
 
 
     geometry = fms.geometry.Large
-
+    
 
     ##########################################################################
     def __init__(self, row = -1, col = -1):
@@ -415,9 +442,33 @@ class Large(Base):
         """
         return 5.812
     
+    ##########################################################################
+    def isDead(self):
+        """ check for not stacked cell (channels 9,10,28) """
+        if ( self.detector==1 and
+             ( self.channel==9 or 
+               self.channel==10 or
+               self.channel==28)):
+             return 1
+        return 0
+
+
+    ##########################################################################
+    def isFermiTube(self):
+        if ( ( self.detector==1 and
+               ( 25 <= self.channel <= 27 or
+                 43 <= self.channel <= 45 or
+                 62 <= self.channel <= 63)) or
+             self.column == 9+self.row or
+             self.column == 16 or
+             self.column == 42-self.row or
+             self.row == 0 or
+             self.row == 33):
+             return 1
+        return 0
+
     
     ##########################################################################
-    @classmethod
     def min_voltage(self, bitshift = 0):
         """Returns the minimum voltage for the parameterisation curve.
         """
@@ -425,10 +476,19 @@ class Large(Base):
 
 
     ##########################################################################
-    @classmethod
     def max_voltage(self, bitshift = 0):
-        """Returns the maximum voltage for the parameterisation curve.
-        """
+        """Returns the maximum voltage for the parameterisation curve."""
+
+        """ check for cells which are not stacked """
+        if self.isDead():
+            return 0
+
+        """ check for fermi cells """
+        if self.isFermiTube():
+            return 1400
+            
+        """ else case is just psu cells """
         if bitshift > 1:
-            return 1700
-        return 1800
+            return 1600
+        return 1700
+
