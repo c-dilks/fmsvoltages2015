@@ -126,9 +126,9 @@ class Printer:
             "echo -e \"^]\";\n",
             "sleep 1;\n",
             ") | telnet fms-serv.trg.bnl.local {}".format(self.telnet),
-            " > ../hvlog_run11/fms_hv2_{}_$t.tex\n".format(self.telnet),
+            " > ../hvlog_run15/fms_hvon_{}_$t.tex\n".format(self.telnet),
             "echo Set new HV\n",
-            "cat ../hvlog_run11/fms_hv2_{}_$t.tex\n".format(self.telnet)
+            "cat ../hvlog_run15/fms_hvon_{}_$t.tex\n".format(self.telnet)
         ]
         for i in lines:
             file.write(i)

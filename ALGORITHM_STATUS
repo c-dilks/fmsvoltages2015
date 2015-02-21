@@ -1,0 +1,20 @@
+voltage limits:
+ - set limit of large fermi cells to 1500
+ - set limit of large psu cells to 1700 (1600 if bitshift>1)
+ - lecroy voltage limiter set to 1700
+
+supress dead cells by setting voltage to 0
+ - 3 unstacked large cells
+ - 7 small cells with broken PMTs
+
+do not bitshit fermi cells (note: currently not bitshifting anything)
+
+demand cells which had empty bases before 2/18 access be at 1400 V by setting gain corrs to unity for cells we put in that access
+
+==============================================
+
+later (for mapping scripts):
+change large_edge to large_fermi and add the other large_fermi cells
+change large_regular to large_psu
+don't worry about resistive bases for now... maybe put it in the map
+alpha distributions for large_psu(+resistive), large_fermi, small_russian, small_yale

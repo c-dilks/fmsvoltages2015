@@ -2,8 +2,8 @@ iterations directory
 ====================
 
 `ibase`: baseline iterations with
-- large cells set to -1400
-- small cells set to 0xB0
+- large cells set to -1500
+- small cells set to 0xC0
 - all gains set to 1
 - all bit shifts set to 0
 

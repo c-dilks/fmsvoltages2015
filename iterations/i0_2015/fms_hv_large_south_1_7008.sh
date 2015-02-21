@@ -215,6 +215,6 @@ echo -e "\r";
 echo -e "\r";
 echo -e "^]";
 sleep 1;
-) | telnet fms-serv.trg.bnl.local 7008 > ../hvlog_run11/fms_hv2_7008_$t.tex
+) | telnet fms-serv.trg.bnl.local 7008 > ../hvlog_run15/fms_hvon_7008_$t.tex
 echo Set new HV
-cat ../hvlog_run11/fms_hv2_7008_$t.tex
+cat ../hvlog_run15/fms_hvon_7008_$t.tex
