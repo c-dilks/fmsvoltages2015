@@ -6,7 +6,8 @@ import os
 FILENAMES = {i: 'qt{}_tac.dat'.format(i) for i in range(1, 5)}
 
 # A list containing all valid bitshifts, [-5, 5]
-VALID_BITSHIFTS = range(-5, 6)
+#VALID_BITSHIFTS = range(-5, 6)
+VALID_BITSHIFTS = range(-1, 2)
 
 class Channel:
     """Describes the pedestal and bit shift state of a single QT channel."""

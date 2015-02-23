@@ -45,10 +45,10 @@ void draw_plots(const char * iteration_dir="working")
 
 
   // projections
-  char nstbcut[4][64];
+  char nstbcut[4][128];
   for(Int_t n=0; n<4; n++)
   {
-    sprintf(nstbcut[n],"detector==%d",n+1);
+    sprintf(nstbcut[n],"detector==%d && abs(newVoltage-oldVoltage)>0.01",n+1);
     tr->Project(bs_vs_gain_n[n],"newBitshift:newGain",nstbcut[n]);
     tr->Project(voltage_diff_n[n],"newVoltage-oldVoltage",nstbcut[n]);
     tr->Project(voltage_n[n],"newVoltage",nstbcut[n]);

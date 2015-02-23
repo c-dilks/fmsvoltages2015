@@ -174,6 +174,9 @@ class Base(object):
 
     def isFermiTube(self):
         return 0
+    
+    def isResistiveBase(self):
+        return 0
 
     def min_voltage(self, bitshift=0):
         """Returns the minimum voltage to which the cell should be set.
@@ -332,6 +335,10 @@ class Small(Base):
     ##########################################################################
     def isFermiTube(self):
         return 0
+
+    ##########################################################################
+    def isResistiveBase(self):
+        return 0
     
 
     ##########################################################################
@@ -467,6 +474,13 @@ class Large(Base):
              return 1
         return 0
 
+    ##########################################################################
+    def isResistiveBase(self):
+        if ( self.detector==1 and self.row==7 and
+             10 <= self.column <= 15):
+             return 1
+        return 0
+
     
     ##########################################################################
     def min_voltage(self, bitshift = 0):
@@ -486,6 +500,10 @@ class Large(Base):
         """ check for fermi cells """
         if self.isFermiTube():
             return 1400
+
+        """ check for resistive base """
+        if self.isResistiveBase():
+            return 1800
             
         """ else case is just psu cells """
         if bitshift > 1:

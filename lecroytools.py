@@ -101,7 +101,7 @@ class Printer:
             "sleep 1;\n",
             "echo -e \"read (0-15,0-15) \\r\";\n",
             "sleep 5;\n",
-            "echo -e \"set voltage limit 1700 \\r\";\n",
+            "echo -e \"set voltage limit 1800 \\r\";\n",
             "echo -e \"\\r\";\n",
             "echo -e \"write (0-15,0-15) -900\\r\"; sleep 2;\n\n"
         ]

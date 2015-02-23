@@ -310,7 +310,13 @@ def optimise(cell, newgain):
     calibration = cell.calibration
     # Gain = normalisation * ADC * 2^bitshift
     # The normalisation is determined by the current gain/ADC of the cell.
-    norm = cell.gain / calibration.get_adc(cell.voltage)
+    try:
+        norm = cell.gain / calibration.get_adc(cell.voltage)
+    except ZeroDivisionError:
+        print 'voltage', cell.voltage, 'adc', calibration.get_adc(cell.voltage)
+        adc_low_val = 5
+        print 'UNDEFINED NORM=0/0; arbitrarily setting ADC(V) to', adc_low_val
+        norm = cell.gain/adc_low_val
     # Collect the bitshift/voltage combinations that allow us to
     # achieve the desired gain
     valid = []
@@ -343,7 +349,7 @@ def optimise(cell, newgain):
     maximum allowed voltage if shift>0 or the minimum allowed voltage if shift<0;
     subsequently, we set shift=0 for the output tables
     """
-    BITSHIFT_SHORT_CIRCUIT = 1
+    BITSHIFT_SHORT_CIRCUIT = 0
 
     # zero the dead channels
     if cell.isDead():
