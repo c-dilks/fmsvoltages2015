@@ -36,4 +36,4 @@ iterations
   - all fermi bases limited to -1400V
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V
-  - `-1 <= bitshift <= +1`
+  - `-3 <= bitshift <= +3`
