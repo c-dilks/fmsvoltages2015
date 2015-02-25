@@ -30,3 +30,10 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V
   - `-1 <= bitshift <= +1`
+
+- `i2_2015` = `i1_2015` + `FmsCorr.txt_i2`
+  - second iteration, applied day 55
+  - all fermi bases limited to -1400V
+  - all large "resistive" bases limited to -1800V
+  - all large psu bases limited to -1700V
+  - `-1 <= bitshift <= +1`
