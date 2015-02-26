@@ -76,4 +76,13 @@ void draw_plots(const char * iteration_dir="working")
     voltage_canv->cd(n+1);
     voltage[n]->Draw();
   };
+
+  char signstr[4];
+  for(Int_t n=0; n<4; n++)
+  {
+    if(voltage_diff[n]->GetMean() >= 0) strcpy(signstr,"+");
+    else strcpy(signstr,"-");
+    if(n<2) printf("`nstb%d: %s%.1fV`\n",n+1,signstr,fabs(voltage_diff[n]->GetMean()));
+    else printf("`nstb%d: %s0x%X`\n",n+1,signstr,(Int_t)(fabs(voltage_diff[n]->GetMean())+0.5));
+  };
 };
