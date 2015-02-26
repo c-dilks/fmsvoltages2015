@@ -22,7 +22,7 @@ iterations
   - fermi bases (mostly edge cells) limited to -1400V
   - large psu bases limited to -1700V
   - no bitshifts allowed
-  - voltage changes (`V_new - V_old`)
+  - average voltage changes (`V_new - V_old`)
     - `nstb1: -64.8V`
     - `nstb2: -48.4V`
     - `nstb3: -0xB`
@@ -34,7 +34,7 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V
   - `-1 <= bitshift <= +1`
-  - voltage changes (`V_new - V_old`)
+  - average voltage changes (`V_new - V_old`)
     - `nstb1: -6.7V`
     - `nstb2: -38.1V`
     - `nstb3: +0x2`
@@ -46,7 +46,7 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V
   - `-3 <= bitshift <= +3`
-  - voltage changes (`V_new - V_old`)
+  - average voltage changes (`V_new - V_old`)
     - `nstb1: -4.5V`
     - `nstb2: -3.9V`
     - `nstb3: -0x6`
