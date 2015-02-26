@@ -23,10 +23,11 @@ iterations
   - large psu bases limited to -1700V
   - no bitshifts allowed
   - average voltage changes (`V_new - V_old`)
-    - `nstb1: -64.8V`
-    - `nstb2: -48.4V`
-    - `nstb3: -0xB`
-    - `nstb4: +0xA`
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: -64.8V`
+      - `nstb2: -48.4V`
+      - `nstb3: -0xB`
+      - `nstb4: +0xA`
 
 - `i1_2015` = `i0_2015` + `FmsCorr.txt_i1`
   - second iteration, applied day 54
@@ -35,10 +36,11 @@ iterations
   - all large psu bases limited to -1700V
   - `-1 <= bitshift <= +1`
   - average voltage changes (`V_new - V_old`)
-    - `nstb1: -6.7V`
-    - `nstb2: -38.1V`
-    - `nstb3: +0x2`
-    - `nstb4: -0x11`
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+    - `nstb1: -9.1V`
+    - `nstb2: -39.9V`
+    - `nstb3: -0x1`
+    - `nstb4: -0x13`
 
 - `i2_2015` = `i1_2015` + `FmsCorr.txt_i2`
   - second iteration, applied day 55
@@ -47,7 +49,8 @@ iterations
   - all large psu bases limited to -1700V
   - `-3 <= bitshift <= +3`
   - average voltage changes (`V_new - V_old`)
-    - `nstb1: -4.5V`
-    - `nstb2: -3.9V`
-    - `nstb3: -0x6`
-    - `nstb4: +0x1`
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: -1.8V`
+      - `nstb2: +1.0V`
+      - `nstb3: -0x4`
+      - `nstb4: +0x2`
