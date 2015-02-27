@@ -499,7 +499,7 @@ class Large(Base):
 
         """ check for fermi cells """
         if self.isFermiTube():
-            return 1400
+            return 1600
 
         """ check for resistive base """
         if self.isResistiveBase():

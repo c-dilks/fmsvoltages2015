@@ -44,11 +44,20 @@ void draw_plots(const char * iteration_dir="working")
   };
 
 
-  // projections
-  char nstbcut[4][256];
+  // projections and cut
+  char nstbcut[4][1024];
   for(Int_t n=0; n<4; n++)
   {
     sprintf(nstbcut[n],"detector==%d && abs(newVoltage-oldVoltage)>0.01 && oldBitshift==newBitshift",n+1);
+    if(!strcmp(iteration_dir,"i3_2015"))
+    {
+      if(n==0)
+      {
+        printf("\nn.b.: i3_2015 raised fermi base limit from 1400 to 1600; extra cut\n");
+        printf("added to filter outliers out of V_new-V_old plots\n\n");
+      };
+      sprintf(nstbcut[n],"%s && !(oldVoltage==1400 && newVoltage==1600)",nstbcut[n]);
+    };
     tr->Project(bs_vs_gain_n[n],"newBitshift:newGain",nstbcut[n]);
     tr->Project(voltage_diff_n[n],"newVoltage-oldVoltage",nstbcut[n]);
     tr->Project(voltage_n[n],"newVoltage",nstbcut[n]);

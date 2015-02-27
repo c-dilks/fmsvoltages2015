@@ -17,7 +17,7 @@ Gain = normalisation * ADC * 2^bitshift
 things which are tuned
 ======================
 voltage limits:
- - set limit of large fermi cells to 1400
+ - set limit of large fermi cells to 1600
  - set limit of large resistive bases to 1800
  - set limit of large psu cells to 1700 (1600 if bitshift>1)
  - lecroy voltage limiter set to 1800
@@ -32,7 +32,8 @@ currentgain / ADC(crrentVoltage)
  - fix this by setting ADC(currentVoltage to an arbitrarily low value
    (currently set to 5; see the variable adc_low_val)
 
-do not bitshit fermi cells (note: currently not bitshifting anything)
+do not bitshit fermi cells
+all other cells limited to -3<=bitshift<=+3
 
 demand cells which had empty bases before 2/18 access be at 1400 V by
 setting gain corrs to unity for cells we put in that access

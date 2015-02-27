@@ -103,7 +103,7 @@ class Printer:
             "sleep 5;\n",
             "echo -e \"set voltage limit 1800 \\r\";\n",
             "echo -e \"\\r\";\n",
-            "echo -e \"write (0-15,0-15) -900\\r\"; sleep 2;\n\n"
+            "echo -e \"write (0-15,0-15) -900\\r\"; sleep 10;\n\n"
         ]
         for i in lines:
             if file: file.write(i)

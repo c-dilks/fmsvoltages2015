@@ -363,9 +363,11 @@ def optimise(cell, newgain):
         # prevent fermi tubes from having positive bit shifts; if they do,
         # force the bitshift to be 0 and set voltage to max allowed
         if cell.isFermiTube():
+            if shift<0:
+                v = cell.min_voltage(0)
+            elif shift>0:
+                v = cell.max_voltage(0)
             shift = 0
-            v = cell.max_voltage(shift)
-
 
         print '==> voltage', v, 'shift', shift
 
