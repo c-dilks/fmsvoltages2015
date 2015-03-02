@@ -320,6 +320,7 @@ class Small(Base):
     ##########################################################################
     def isDead(self):
         """ check for not stacked cell (channels 9,10,28) """
+        """ ( or any other dead cell ) """
         if ( ( self.detector==3 and
                ( self.channel==154 or
                  self.channel==203 or
@@ -452,10 +453,12 @@ class Large(Base):
     ##########################################################################
     def isDead(self):
         """ check for not stacked cell (channels 9,10,28) """
+        """ ( or any other dead cell ) """
         if ( self.detector==1 and
              ( self.channel==9 or 
                self.channel==10 or
-               self.channel==28)):
+               self.channel==28 or
+               self.channel==135)):
              return 1
         return 0
 

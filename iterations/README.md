@@ -1,6 +1,12 @@
 iterations directory
 ====================
 
+`qt_mask`: mask out specific channels using qt bitshift file
+- this is done by filtering the qt bit shift files through a regex after
+  they've been produced in an iteration
+- usage: `qt_mask [iterationdir]`
+- BE CAREFUL since this script will overwrite the original bit shift file(s)
+
 `ibase`: baseline iterations with
 - large cells set to -1500
 - small cells set to 0xC0
@@ -30,7 +36,7 @@ iterations
       - `nstb4: +0xA`
 
 - `i1_2015` = `i0_2015` + `FmsCorr.txt_i1`
-  - second iteration, applied day 54
+  - applied day 54
   - all fermi bases limited to -1400V
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V
@@ -43,7 +49,7 @@ iterations
     - `nstb4: -0x13`
 
 - `i2_2015` = `i1_2015` + `FmsCorr.txt_i2`
-  - second iteration, applied day 55
+  - applied day 55
   - all fermi bases limited to -1400V
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
@@ -56,7 +62,7 @@ iterations
       - `nstb4: +0x2`
 
 - `i3_2015` = `i2_2015` + `FmsCorr.txt_i3`
-  - second iteration, applied day 58
+  - applied day 58
   - carl's gain goals implemented
   - all fermi bases limited to -1600V
   - all large "resistive" bases limited to -1800V
@@ -69,3 +75,22 @@ iterations
       - `nstb2: -55.3V`
       - `nstb3: +0x8`
       - `nstb4: +0x6`
+      
+- `i4_2015` = `i3_2015` + `FmsCorr.txt_i4`
+  - applied day 61
+  - carl's gain goals implemented
+  - `nstb1 ch135` voltage set to zero (base needs to be pushed in)
+  - all fermi bases limited to -1600V
+  - all large "resistive" bases limited to -1800V
+  - all large psu bases limited to -1700V (-1600V if bitshift>1)
+  - `-5 <= bitshift <= +5`
+  - added qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
+    - `n3 slot1 chan29`
+    - `n3 slot1 chan30`
+    - `n4 slot3 chan24`
+  - average voltage changes (`V_new - V_old`)
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: -0.2V`
+      - `nstb2: +2.6V`
+      - `nstb3: -0x5`
+      - `nstb4: -0x3`
