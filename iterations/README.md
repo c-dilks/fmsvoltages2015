@@ -94,3 +94,22 @@ iterations
       - `nstb2: +2.6V`
       - `nstb3: -0x5`
       - `nstb4: -0x3`
+
+- `i5_2015` = `i4_2015` + `FmsCorr.txt_i5`
+  - applied day 62
+  - carl's gain goals implemented
+  - `nstb1 ch135` voltage set to zero (base needs to be pushed in)
+  - all fermi bases limited to -1600V
+  - all large "resistive" bases limited to -1800V
+  - all large psu bases limited to -1700V (-1600V if bitshift>1)
+  - `-5 <= bitshift <= +5`
+  - added qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
+    - `n3 slot1 chan29`
+    - `n3 slot1 chan30`
+    - `n4 slot3 chan24`
+  - average voltage changes (`V_new - V_old`)
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: -6.9V`
+      - `nstb2: -6.6V`
+      - `nstb3: +0x4`
+      - `nstb4: -0x0`
