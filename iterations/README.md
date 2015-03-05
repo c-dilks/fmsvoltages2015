@@ -28,12 +28,12 @@ iterations
   - fermi bases (mostly edge cells) limited to -1400V
   - large psu bases limited to -1700V
   - no bitshifts allowed
-  - average voltage changes (`V_new - V_old`)
+  - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-      - `nstb1: -64.8V`
-      - `nstb2: -48.4V`
-      - `nstb3: -0xB`
-      - `nstb4: +0xA`
+      - `nstb1: -0.050870V (rms=0.079851)`
+      - `nstb2: -0.039725V (rms=0.081058)`
+      - `nstb3: -1.287527V (rms=8.395928)`
+      - `nstb4: -0.520778V (rms=6.252124)`
 
 - `i1_2015` = `i0_2015` + `FmsCorr.txt_i1`
   - applied day 54
@@ -41,12 +41,12 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V
   - `-1 <= bitshift <= +1`
-  - average voltage changes (`V_new - V_old`)
+  - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-    - `nstb1: -9.1V`
-    - `nstb2: -39.9V`
-    - `nstb3: -0x1`
-    - `nstb4: -0x13`
+      - `nstb1: -0.007880V (rms=0.033154)`
+      - `nstb2: -0.031329V (rms=0.062817)`
+      - `nstb3: -0.039322V (rms=0.474790)`
+      - `nstb4: -0.224880V (rms=0.975728)`
 
 - `i2_2015` = `i1_2015` + `FmsCorr.txt_i2`
   - applied day 55
@@ -54,12 +54,12 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-3 <= bitshift <= +3`
-  - average voltage changes (`V_new - V_old`)
+  - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-      - `nstb1: -1.8V`
-      - `nstb2: +1.0V`
-      - `nstb3: -0x4`
-      - `nstb4: +0x2`
+      - `nstb1: -0.001261V (rms=0.020920)`
+      - `nstb2: +0.000750V (rms=0.039774)`
+      - `nstb3: -0.226169V (rms=1.080693)`
+      - `nstb4: +0.005185V (rms=0.170115)`
 
 - `i3_2015` = `i2_2015` + `FmsCorr.txt_i3`
   - applied day 58
@@ -68,13 +68,13 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
-  - average voltage changes (`V_new - V_old`)
+  - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
     - additional cut to account for fermi tube max change: `!(oldVoltage==1400 && newVoltage==1600)`
-      - `nstb1: -31.1V`
-      - `nstb2: -55.3V`
-      - `nstb3: +0x8`
-      - `nstb4: +0x6`
+      - `nstb1: -0.023672V (rms=0.034376)`
+      - `nstb2: -0.042727V (rms=0.047773)`
+      - `nstb3: +0.035823V (rms=0.535117)`
+      - `nstb4: +0.037967V (rms=0.174555)`
       
 - `i4_2015` = `i3_2015` + `FmsCorr.txt_i4`
   - applied day 61
@@ -88,12 +88,12 @@ iterations
     - `n3 slot1 chan29`
     - `n3 slot1 chan30`
     - `n4 slot3 chan24`
-  - average voltage changes (`V_new - V_old`)
+  - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-      - `nstb1: -0.2V`
-      - `nstb2: +2.6V`
-      - `nstb3: -0x5`
-      - `nstb4: -0x3`
+      - `nstb1: -0.000749V (rms=0.031682)`
+      - `nstb2: +0.001146V (rms=0.043911)`
+      - `nstb3: -0.234549V (rms=1.097954)`
+      - `nstb4: -0.088197V (rms=0.409112)`
 
 - `i5_2015` = `i4_2015` + `FmsCorr.txt_i5`
   - applied day 62
@@ -103,13 +103,13 @@ iterations
   - all large "resistive" bases limited to -1800V
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
-  - added qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
+  - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
     - `n3 slot1 chan29`
     - `n3 slot1 chan30`
     - `n4 slot3 chan24`
-  - average voltage changes (`V_new - V_old`)
+  - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-      - `nstb1: -6.9V`
-      - `nstb2: -6.6V`
-      - `nstb3: +0x4`
-      - `nstb4: -0x0`
+      - `nstb1: -0.005627V (rms=0.035205)`
+      - `nstb2: -0.005944V (rms=0.042991)`
+      - `nstb3: -0.148118V (rms=1.235741)`
+      - `nstb4: -0.028605V (rms=0.280841)`

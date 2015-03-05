@@ -27,7 +27,7 @@ void draw_plots(const char * iteration_dir="working")
     sprintf(voltage_n[n],"voltage_%d",n+1);
     
     sprintf(bs_vs_gain_t[n],"bit shift vs. new gain (nstb%d)",n+1);
-    sprintf(voltage_diff_t[n],"V_{new}-V_{old} (nstb%d)",n+1);
+    sprintf(voltage_diff_t[n],"(V_{new}-V_{old})/V_{new} (nstb%d)",n+1);
     sprintf(voltage_t[n],"V_{new} (nstb%d)",n+1);
 
     bs_vs_gain[n] = new TH2F(bs_vs_gain_n[n],bs_vs_gain_t[n],100,0,10,11,-5,5);
@@ -59,7 +59,7 @@ void draw_plots(const char * iteration_dir="working")
       sprintf(nstbcut[n],"%s && !(oldVoltage==1400 && newVoltage==1600)",nstbcut[n]);
     };
     tr->Project(bs_vs_gain_n[n],"newBitshift:newGain",nstbcut[n]);
-    tr->Project(voltage_diff_n[n],"newVoltage-oldVoltage",nstbcut[n]);
+    tr->Project(voltage_diff_n[n],"(newVoltage-oldVoltage)/newVoltage",nstbcut[n]);
     tr->Project(voltage_n[n],"newVoltage",nstbcut[n]);
   }
 
@@ -91,7 +91,9 @@ void draw_plots(const char * iteration_dir="working")
   {
     if(voltage_diff[n]->GetMean() >= 0) strcpy(signstr,"+");
     else strcpy(signstr,"-");
-    if(n<2) printf("`nstb%d: %s%.1fV`\n",n+1,signstr,fabs(voltage_diff[n]->GetMean()));
-    else printf("`nstb%d: %s0x%X`\n",n+1,signstr,(Int_t)(fabs(voltage_diff[n]->GetMean())+0.5));
+    printf("      - `nstb%d: %s%fV (rms=%f)`\n",n+1,
+      signstr,fabs(voltage_diff[n]->GetMean()),voltage_diff[n]->GetRMS());
+    //else printf("`nstb%d: %s0x%X (rms=%.1f)`\n",n+1,
+      //signstr,(Int_t)(fabs(voltage_diff[n]->GetMean())+0.5),voltage_diff[n]->GetRMS());
   };
 };

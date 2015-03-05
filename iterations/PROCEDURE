@@ -2,10 +2,11 @@ UPLOADING NEW ITERATIONS
 ------------------------
 
 - preparation:
-  - execute `qt_mask [iterationdir]` on the new iteration dir
+  - DO NOT DO -- execute `qt_mask [iterationdir]` on the new iteration dir
   - execute `copy_to_fms_map_dir [iterationdir]` to copy new files to GUI_MAP program
   - produce tarball with `tar czvf [iterationdir]{.tar.gz,}` 
   - commit to git
+  - commit run15 code to git
 
 1. upload new tarball to rcas, ssh to rcas, upload tarball to daqman:~/fmshv/iterations
 2. ssh to daqman:~/fmshv/iterations, untar the tarball; chmod the four sh scripts to u+x
