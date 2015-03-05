@@ -1,0 +1,22 @@
+UPLOADING NEW ITERATIONS
+------------------------
+
+- preparation:
+  - execute `qt_mask [iterationdir]` on the new iteration dir
+  - execute `copy_to_fms_map_dir [iterationdir]` to copy new files to GUI_MAP program
+  - produce tarball with `tar czvf [iterationdir]{.tar.gz,}` 
+  - commit to git
+
+1. upload new tarball to rcas, ssh to rcas, upload tarball to daqman:~/fmshv/iterations
+2. ssh to daqman:~/fmshv/iterations, untar the tarball; chmod the four sh scripts to u+x
+(3. in the four console windows, cd to the new iteration directory and run each sh script)
+4. upload tarball to fmsled and ssh to fmsled
+5. untar the tarball and copy [iterationdir]/setVoltages.txt to hv/setVoltages.[iteration].txt
+(6. on ~/hv/console.exe (via cygwin!), run @setVoltages.[iteration].txt and then @lock.txt)
+7. go back to rcas ssh
+8. upload new tarball to staruser@startrg.bnl.gov, then ssh to it
+9. on startrg, cd to /home/startrg/trg/cal/qt/2015, and move the tarball you just uploaded to here
+10. untar the tarball in the 2015/ directory; cd ..
+11. remove our qt*_tac.dat symlinks (USE rm -i SO YOU DON'T SCREW IT UP)
+12. create new symlinks with `ln -s 2015/[iteration]/*.dat ./`; check with `ls -l | grep '\->'`
+
