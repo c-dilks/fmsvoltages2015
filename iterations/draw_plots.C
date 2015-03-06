@@ -33,12 +33,12 @@ void draw_plots(const char * iteration_dir="working")
     bs_vs_gain[n] = new TH2F(bs_vs_gain_n[n],bs_vs_gain_t[n],100,0,10,11,-5,5);
     if(n<2) 
     {
-      voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],300,-1000,1000);
+      voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],300,-1,1);
       voltage[n] = new TH1F(voltage_n[n],voltage_t[n],200,0,1850);
     }
     else 
     {
-      voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],100,-200,200);
+      voltage_diff[n] = new TH1F(voltage_diff_n[n],voltage_diff_t[n],100,-1,1);
       voltage[n] = new TH1F(voltage_n[n],voltage_t[n],100,0,256);
     };
   };
