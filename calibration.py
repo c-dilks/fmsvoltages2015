@@ -355,13 +355,22 @@ def optimise(cell, newgain):
     if cell.isDead():
         v = 0
         shift = 0
+    
+    """ THIS IF STATMENT FORCES THE FOLLOWING CHANNELS TO BE AT 1600V, BS=0
+         -------------------------------------------------
+         -------------------------------------------------
+         ------------------------------------------------- """
+    if ( cell.detector==1 and 
+         ( cell.channel==135 or cell.channel==132 or cell.channel==130)):
+         v = 1600
+         shift = 0
 
     elif valid:
         v = valid[0][0]
         shift = valid[0][1]
 
-        # prevent fermi tubes from having positive bit shifts; if they do,
-        # force the bitshift to be 0 and set voltage to max allowed
+        # prevent fermi tubes from having any bit shifts; if they do,
+        # force the bitshift to be 0 and set voltage to max or min allowed
         if cell.isFermiTube():
             if shift<0:
                 v = cell.min_voltage(0)

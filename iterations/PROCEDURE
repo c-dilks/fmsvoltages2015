@@ -2,7 +2,7 @@ UPLOADING NEW ITERATIONS
 ------------------------
 
 - preparation:
-  - DO NOT DO -- execute `qt_mask [iterationdir]` on the new iteration dir
+  - execute `qt_mask [iterationdir]` on the new iteration dir
   - execute `copy_to_fms_map_dir [iterationdir]` to copy new files to GUI_MAP program
   - produce tarball with `tar czvf [iterationdir]{.tar.gz,}` 
   - commit to git

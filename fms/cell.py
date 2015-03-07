@@ -457,8 +457,7 @@ class Large(Base):
         if ( self.detector==1 and
              ( self.channel==9 or 
                self.channel==10 or
-               self.channel==28 or
-               self.channel==135)):
+               self.channel==28)):
              return 1
         return 0
 
