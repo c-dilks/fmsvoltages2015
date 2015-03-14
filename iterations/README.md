@@ -130,3 +130,7 @@ iterations
       - `nstb2: +0.006445V (rms=0.031487)`
       - `nstb3: +0.059736V (rms=0.215610)`
       - `nstb4: +0.029628V (rms=0.152716)`
+
+- `i6_2015_modified`
+  - all files modified according to hot/bad channel supressions on `i6_2015`
+    (see Stephen's logbook entry 11 March 2015)
