@@ -134,3 +134,22 @@ iterations
 - `i6_2015_modified`
   - all files modified according to hot/bad channel supressions on `i6_2015`
     (see Stephen's logbook entry 11 March 2015)
+
+- `i7_2015` = `i6_2015_modified` + `FmsCorr.txt_i7`
+  - applied day 73
+  - carl's gain goals implemented
+  - all fermi bases limited to -1600V
+  - all large "resistive" bases limited to -1800V
+    - resistive channels 130, 132, 135 set to -1600V and bitshift=0
+  - all large psu bases limited to -1700V (-1600V if bitshift>1)
+  - `-5 <= bitshift <= +5`
+  - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
+    - `n3 slot0 chan31`
+    - `n3 slot1 chan31`
+    - `n4 slot3 chan24`
+  - average voltage changes (`(V_new - V_old)/V_new`)
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: -0.002846V (rms=0.027997)`
+      - `nstb2: -0.002323V (rms=0.022968)`
+      - `nstb3: +0.023950V (rms=0.186630)`
+      - `nstb4: +0.041386V (rms=0.160549)`
