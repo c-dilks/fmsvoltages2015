@@ -85,9 +85,9 @@ iterations
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
   - added qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
-    - `n3 slot1 chan29`
-    - `n3 slot1 chan30`
-    - `n4 slot3 chan24`
+    - `crt3 slot1 chan29`
+    - `crt3 slot1 chan30`
+    - `crt4 slot3 chan24`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
       - `nstb1: -0.000749V (rms=0.031682)`
@@ -104,9 +104,9 @@ iterations
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
   - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
-    - `n3 slot1 chan29`
-    - `n3 slot1 chan30`
-    - `n4 slot3 chan24`
+    - `crt3 slot1 chan29`
+    - `crt3 slot1 chan30`
+    - `crt4 slot3 chan24`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
       - `nstb1: -0.005627V (rms=0.035205)`
@@ -123,7 +123,7 @@ iterations
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
   - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
-    - `n4 slot3 chan24`
+    - `crt4 slot3 chan24`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
       - `nstb1: +0.005147V (rms=0.027389)`
@@ -132,7 +132,7 @@ iterations
       - `nstb4: +0.029628V (rms=0.152716)`
 
 - `i6_2015_modified`
-  - all files modified according to hot/bad channel supressions on `i6_2015`
+  - all files modified according to hot/bad channel suppressions on `i6_2015`
     (see Stephen's logbook entry 11 March 2015)
 
 - `i7_2015` = `i6_2015_modified` + `FmsCorr.txt_i7`
@@ -144,9 +144,9 @@ iterations
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
   - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
-    - `n3 slot0 chan31`
-    - `n3 slot1 chan31`
-    - `n4 slot3 chan24`
+    - `crt3 slot0 chan31`
+    - `crt3 slot1 chan31`
+    - `crt4 slot3 chan24`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
       - `nstb1: -0.002846V (rms=0.027997)`
@@ -154,7 +154,7 @@ iterations
       - `nstb3: +0.023950V (rms=0.186630)`
       - `nstb4: +0.041386V (rms=0.160549)`
 
-- `i8_2015` = `i7_2015_modified` + `FmsCorr.txt_i8`
+- `i8_2015` = `i7_2015` + `FmsCorr.txt_i8`
   - applied day 75
   - only 20 cells were modified, as this is a "second order" iteration
     on `i7_2015`
@@ -165,13 +165,16 @@ iterations
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
   - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
-    - `n3 slot0 chan31`
-    - `n3 slot1 chan31`
-    - `n4 slot3 chan24`
+    - `crt3 slot0 chan31`
+    - `crt3 slot1 chan31`
+    - `crt4 slot3 chan24`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - not reported since there were only 20 changes
 
-- `i9_2015` = `i8_2015` + `FmsCorr.txt_i9`
+- `i8_2015_modified`
+  - all files modified according to hot/bad channel suppressions on `i8_2015`
+
+- `i9_2015` = `i8_2015_modified` + `FmsCorr.txt_i9`
   - applied day 111
   - carl's gain goals implemented
   - all fermi bases limited to -1600V
@@ -180,12 +183,14 @@ iterations
   - all large psu bases limited to -1700V (-1600V if bitshift>1)
   - `-5 <= bitshift <= +5`
   - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
-    - `n3 slot0 chan31`
-    - `n3 slot1 chan31`
-    - `n4 slot3 chan24`
+    - `crt3 slot0 chan31`
+    - `crt3 slot1 chan31`
+    - `crt3 slot2 chan3`
+    - `crt4 slot3 chan24`
+    - `crt4 slot10 chan10`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-      - `nstb1: +0.014591V (rms=0.019550)`
-      - `nstb2: +0.012618V (rms=0.017542)`
-      - `nstb3: +0.047346V (rms=0.203230)`
-      - `nstb4: +0.026311V (rms=0.140211)`
+      - `nstb1: +0.014592V (rms=0.019552)`
+      - `nstb2: +0.012861V (rms=0.016965)`
+      - `nstb3: +0.044427V (rms=0.203499)`
+      - `nstb4: +0.025710V (rms=0.140806)`

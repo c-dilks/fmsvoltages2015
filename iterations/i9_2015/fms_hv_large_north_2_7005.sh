@@ -159,7 +159,7 @@ echo -e "write (12,2) -1388\r"; sleep 2;
 echo -e "write (12,3) -1621\r"; sleep 2;
 echo -e "write (12,5) -1600\r"; sleep 2;
 echo -e "write (12,6) -1271\r"; sleep 2;
-echo -e "write (12,7) -1529\r"; sleep 2;
+echo -e "write (12,7) -1313\r"; sleep 2;
 echo -e "write (12,9) -1600\r"; sleep 2;
 echo -e "write (12,10) -1600\r"; sleep 2;
 echo -e "write (12,11) -1453\r"; sleep 2;
