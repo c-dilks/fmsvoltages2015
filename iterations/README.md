@@ -170,3 +170,22 @@ iterations
     - `n4 slot3 chan24`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - not reported since there were only 20 changes
+
+- `i9_2015` = `i8_2015` + `FmsCorr.txt_i9`
+  - applied day 111
+  - carl's gain goals implemented
+  - all fermi bases limited to -1600V
+  - all large "resistive" bases limited to -1800V
+    - resistive channels 130, 132, 135 set to -1600V and bitshift=0
+  - all large psu bases limited to -1700V (-1600V if bitshift>1)
+  - `-5 <= bitshift <= +5`
+  - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
+    - `n3 slot0 chan31`
+    - `n3 slot1 chan31`
+    - `n4 slot3 chan24`
+  - average voltage changes (`(V_new - V_old)/V_new`)
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: +0.014591V (rms=0.019550)`
+      - `nstb2: +0.012618V (rms=0.017542)`
+      - `nstb3: +0.047346V (rms=0.203230)`
+      - `nstb4: +0.026311V (rms=0.140211)`
