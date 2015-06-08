@@ -236,7 +236,7 @@ iterations
     - `crt4 slot10 chan10`
   - average voltage changes (`(V_new - V_old)/V_new`)
     - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
-      - `nstb1: +0.005058V (rms=0.016622)`
-      - `nstb2: +0.002571V (rms=0.012253)`
-      - `nstb3: +0.031114V (rms=0.122431)`
-      - `nstb4: +0.033290V (rms=0.129666)`
+      - `nstb1: +0.010528V (rms=0.010076)`
+      - `nstb2: +0.009412V (rms=0.010650)`
+      - `nstb3: +0.064483V (rms=0.138864)`
+      - `nstb4: +0.051715V (rms=0.103682)`
