@@ -221,7 +221,7 @@ iterations
     (just qt files)
 
 - `i11_2015` = `i10_2015_modified` + `FmsCorr.txt_i11`
-  - applied day 159
+  - applied day 159 -- NO DATA TAKEN WITH THIS ITERATION (i12 replaced this iteration)
   - carl's gain goals implemented
   - all fermi bases limited to -1600V
   - all large "resistive" bases limited to -1800V
@@ -240,3 +240,26 @@ iterations
       - `nstb2: +0.009412V (rms=0.010650)`
       - `nstb3: +0.064483V (rms=0.138864)`
       - `nstb4: +0.051715V (rms=0.103682)`
+
+- `i12_2015` = `i10_2015_modified` + `FmsCorr.txt_i12`
+  - applied day 160 -- THIS IS A LAST-MINUTE REPLACEMENT FOR i11
+    (no data was taken with i11, extra corrections were made for this iteration
+     at the start up of pAl running)
+  - carl's gain goals implemented
+  - all fermi bases limited to -1600V
+  - all large "resistive" bases limited to -1800V
+    - resistive channels 130, 132, 135 set to -1600V and bitshift=0
+  - all large psu bases limited to -1700V (-1600V if bitshift>1)
+  - `-5 <= bitshift <= +5`
+  - qt masks (following convention of `qt*_tac.dat` files, change `-1` to `4095`):
+    - `crt3 slot0 chan31`
+    - `crt3 slot1 chan31`
+    - `crt3 slot2 chan3`
+    - `crt4 slot3 chan24`
+    - `crt4 slot10 chan10`
+  - average voltage changes (`(V_new - V_old)/V_new`)
+    - cuts: `oldBitshift==newBitshift && abs(newVoltage-oldVoltage)>0.01`
+      - `nstb1: +0.011164V (rms=0.011616)`
+      - `nstb2: +0.010059V (rms=0.012231)`
+      - `nstb3: +0.073820V (rms=0.130001)`
+      - `nstb4: +0.062111V (rms=0.092956)`
